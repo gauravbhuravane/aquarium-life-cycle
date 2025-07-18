@@ -15,7 +15,7 @@ services:
       - key: DB_PASSWORD
         value: password
       - key: DB_NAME
-        value: mydatabase
+        value: fish_info
 
   - type: pserv
     name: mysql-db
