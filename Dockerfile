@@ -1,16 +1,14 @@
-# Use an official PHP‑Apache image
-FROM php:8.2-apache
+# Use official PHP with Apache
+FROM php:8.1-apache
 
-# --------------------------------------------------
-# 👇 install the MySQLi and PDO‑MySQL extensions
-# --------------------------------------------------
-RUN docker-php-ext-install mysqli pdo_mysql
+# Install MySQL extension
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# (optional) enable Apache mod_rewrite
+# Enable Apache rewrite (if needed)
 RUN a2enmod rewrite
 
-# Copy project files
+# Copy all files into the container
 COPY . /var/www/html/
-RUN chown -R www-data:www-data /var/www/html
 
-EXPOSE 80
+# Set working directory
+WORKDIR /var/www/html
