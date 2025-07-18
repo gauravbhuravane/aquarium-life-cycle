@@ -1,12 +1,14 @@
 <?php
 $host = getenv("DB_HOST");
 $user = getenv("DB_USER");
-$pass = getenv("DB_PASSWORD");
-$dbname = getenv("DB_NAME");
+$password = getenv("DB_PASSWORD");
+$database = getenv("DB_NAME");
+$port = getenv("DB_PORT");  // optional, default is 3306
 
-$con = mysqli_connect($host, $user, $pass, $dbname);
+$conn = new mysqli($host, $user, $password, $database, $port);
 
-if (!$con) {
-    die("Connection Error: " . mysqli_connect_error());
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>
