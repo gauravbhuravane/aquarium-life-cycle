@@ -133,7 +133,8 @@
           <tbody>
           <?php
     // Perform database query to retrieve fish details using the fish ID
-    $con = mysqli_connect("localhost", "root", "", "fish_info");
+    require_once("db.php");
+
 
     if (!$con) {
         die("Connection Error");
